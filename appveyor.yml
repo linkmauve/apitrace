@@ -57,6 +57,6 @@ deploy:
   on:
     branch: appveyor
   subject: apitrace
-  repo: apitrace
+  repo: generic
   package: windows
   override: true
