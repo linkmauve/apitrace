@@ -44,9 +44,20 @@ artifacts:
 - path: build/apitrace-*.7z
 
 deploy:
-  provider: GitHub
+- provider: GitHub
   auth_token:
     secure: gjIEc0c2BefRL7rHhypJA57Swohq5bTnyJoqT6U7jSzPiYc5GS5pt8jfKoChIzuE
   artifact: /.*\.7z/
   on:
-    appveyor_repo_tag: true
+    APPVEYOR_REPO_TAG: true
+- provider: Bintray
+  username: jrfonseca
+  api_key:
+    secure: //nOc82+l5zpI4tqjp/BsnLfUZ7trUn2ks3kibEmWYl3X9JbHVfSk8ZKqZXofhAw
+  repo: apitrace
+  on:
+    branch: master
+  package: apitrace
+  version: latest
+  publish: true
+  override: true
