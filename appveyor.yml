@@ -59,4 +59,5 @@ deploy:
   subject: apitrace
   repo: generic
   package: windows
+  publish: true
   override: true
