@@ -50,7 +50,7 @@ deploy:
   artifact: /.*\.7z/
   on:
     APPVEYOR_REPO_TAG: true
-- provider: Bintray
+- provider: BinTray
   username: jrfonseca
   api_key:
     secure: //nOc82+l5zpI4tqjp/BsnLfUZ7trUn2ks3kibEmWYl3X9JbHVfSk8ZKqZXofhAw
