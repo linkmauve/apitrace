@@ -59,6 +59,4 @@ deploy:
   subject: apitrace
   repo: apitrace
   package: windows
-  version: latest
-  publish: true
   override: true
