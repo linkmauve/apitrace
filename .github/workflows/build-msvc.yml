@@ -13,4 +13,4 @@ jobs:
       with:
         fetch-depth: 1
     - name: Build
-      run: .\ci\build-msvs.ps1 -target ${{ matrix.target }}
+      run: .\ci\build-msvc.ps1 -target ${{ matrix.target }}
