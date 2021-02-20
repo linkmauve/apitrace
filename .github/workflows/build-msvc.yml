@@ -13,5 +13,4 @@ jobs:
       with:
         fetch-depth: 1
     - name: Build
-      run: powershell -NoProfile -ExecutionPolicy Bypass -Version 5.1 -File ci\build-msvc.ps1 -target ${{ matrix.target }}
-      shell: cmd
+      run: .\ci\build-msvc.ps1 -target ${{ matrix.target }}

@@ -48,7 +48,23 @@ $archiveUrl = "$packageUrl/$archive"
 
 if (!(Test-Path $archive -PathType Leaf)) {
 	Write-Host "Downloading $archiveUrl ..."
-	Invoke-WebRequest -Uri $archiveUrl -OutFile $archive -UserAgent NativeHost
+	# https://github.com/PowerShell/PowerShell/issues/2896
+	do {
+		try {
+			Invoke-WebRequest -Uri $archiveUrl -OutFile $archive -UserAgent NativeHost
+			$retry = $false
+		}
+		catch {
+			if (($_.Exception.GetType() -match "HttpResponseException") -and ($_.Exception -match "302")) {
+				$archiveUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
+				Write-Host "Redirected to $archiveUrl ..."
+				$retry = $true
+			}
+			else {
+				throw $_
+																	    }
+		}
+	} while ($retry)
 }
 
 $qtToolchainPath = "$qtRoot\$qtVersion\$toolchain"
