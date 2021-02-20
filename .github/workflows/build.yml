@@ -52,7 +52,7 @@ jobs:
     - name: package
       run: cmake --build $PWD/build --use-stderr --target package
 
-  ubuntu-16.04:
+  ubuntu-16_04:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
